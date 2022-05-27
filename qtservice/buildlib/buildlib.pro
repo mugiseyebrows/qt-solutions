@@ -9,5 +9,9 @@ win32 {
     DLLDESTDIR = $$[QT_INSTALL_BINS]
     QMAKE_DISTCLEAN += $$[QT_INSTALL_BINS]\\$${QTSERVICE_LIBNAME}.dll
 }
+
+headers.path = $$[QT_INSTALL_HEADERS]\\QtSolutions_Service
+headers.files = $$HEADERS
+
 target.path = $$DESTDIR
-INSTALLS += target
+INSTALLS += target headers
