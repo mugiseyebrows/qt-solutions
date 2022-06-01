@@ -48,6 +48,7 @@
 #include <QSettings>
 
 #include "qtservice.h"
+#include <QRegularExpression>
 
 // HttpDaemon is the the class that implements the simple HTTP server.
 class HttpDaemon : public QTcpServer
@@ -98,7 +99,7 @@ private slots:
         // document back.
         QTcpSocket* socket = (QTcpSocket*)sender();
         if (socket->canReadLine()) {
-            QStringList tokens = QString(socket->readLine()).split(QRegExp("[ \r\n][ \r\n]*"));
+            QStringList tokens = QString(socket->readLine()).split(QRegularExpression("[ \r\n][ \r\n]*"));
             if (tokens[0] == "GET") {
                 QTextStream os(socket);
                 os.setAutoDetectUnicode(true);
